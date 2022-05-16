@@ -11,11 +11,11 @@ import (
 	"gitlab.clovertwo.com/clovertwo/starUSB/star"
 )
 
-const version = "0.9"
+const version = "1.0"
 
 func main() {
 
-	fmt.Printf("*** StarUSB v%s (c) 2018 CloverTwo, Inc.\n", version)
+	fmt.Printf("*** goStar v%s (c) 2022 Impero, LLC.\n", version)
 
 	fUsbID := flag.String("usbID", "AB123456", "A string with length 8, only capitals or numeric values")
 	randomID := flag.Bool("random", false, "Set a random ID")
@@ -28,12 +28,9 @@ func main() {
 
 	flag.Parse()
 
-	fmt.Println("Scanning the USB bus for star devices..")
+	fmt.Println("Scanning the USB bus for Star devices..")
 
-	targetSet := false
-	if *address > -1 && *bus > -1 && *port > -1 {
-		targetSet = true
-	}
+	targetSet := *address > -1 && *bus > -1 && *port > -1
 
 	usbID := *fUsbID
 
@@ -82,6 +79,6 @@ func main() {
 		}
 
 	} else {
-		fmt.Println("No star devices found")
+		fmt.Println("No Star devices found")
 	}
 }
